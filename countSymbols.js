@@ -1,10 +1,7 @@
-function countSymbols(str){
+    function countSymbols(str){
       // Создание переменных
 
       let countStart = 1; //инициализация кол-ва букв
-      // Массивы для ключей и значений
-      let keysArr = [];
-      let valuesArr = [];
       //Конечная строка
       let strEnd = '';
       // Пойдем через Map
@@ -12,7 +9,6 @@ function countSymbols(str){
 
       // Заходим в строку
       [...str].forEach(el =>{
-
         // Проверяем есть ли уже наш эл. в Map по ключу
         if(strMap.has(el)){
 
@@ -25,21 +21,11 @@ function countSymbols(str){
           strMap.set(el, countStart)
         }
       });
-
       console.log(strMap);
 
-      // Создаем 2 массива с ключами и значениями из Mapa (Может можно подругому но хз)
-      for(let el of strMap.keys()){
-        keysArr.push(el)
-      } 
-      for(let el of strMap.values()){
-        valuesArr.push(el)
-      } 
-
-
-      // Заходим в в массив ключей, проходимся по нему и создаем строку из текущего эл. в массиве ключей и забираем из массива значений по индексу текущего ел. значение
-      keysArr.forEach((el, ind) =>{
-        strEnd += `${el}${valuesArr[ind]}`;
+      // Проходимся по Map и вытаскиваем ключи и значения, и записываем их в результирующую строку
+      strMap.forEach((values, key) =>{
+        strEnd +=`${key}${values}`
       })
       
       console.log(strEnd);
